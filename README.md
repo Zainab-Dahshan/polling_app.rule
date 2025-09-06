@@ -34,3 +34,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+/app
+├── auth/                  # Authentication related components & logic
+├── api/                   # Next.js API routes (App Router)
+│   ├── auth/[...nextauth]/route.ts
+│   ├── polls/route.ts     # POST (create), GET (list)
+│   └── polls/[id]/route.ts # GET (single), DELETE
+├── polls/                 # Polling-specific components & pages
+│   ├── components/        # Reusable poll components (e.g., PollCard, VoteForm)
+│   ├── [id]/page.tsx     # Dynamic route for single poll view & voting
+│   └── new/page.tsx      # Page for creating a new poll
+/components
+├── ui/                    # Shadcn/ui components (using `npx shadcn-ui@latest add`)
+├── forms/                 # Custom form components built with react-hook-form
+└── providers/             # React context providers (e.g., ThemeProvider)
+/lib                       # Utility functions, database config, validations
+/types                     # TypeScript type definitions
