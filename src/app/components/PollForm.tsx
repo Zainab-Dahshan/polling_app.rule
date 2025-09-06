@@ -62,10 +62,10 @@ export default function PollForm() {
       });
 
       form.reset();
-    } catch (error) {
+    } catch (error: unknown) {
       toast({
         title: 'Error',
-        description: 'Failed to create poll. Please try again.',
+        description: error instanceof Error ? error.message : 'An error occurred',
         variant: 'destructive',
       });
     } finally {
@@ -98,8 +98,7 @@ export default function PollForm() {
             {index >= 2 && (
               <Button
                 type="button"
-                variant="destructive"
-                size="icon"
+                className="bg-red-500 hover:bg-red-600 text-white"
                 onClick={() => remove(index)}
               >
                 ×
@@ -112,7 +111,7 @@ export default function PollForm() {
         )}
         <Button
           type="button"
-          variant="outline"
+          className="border border-input bg-background hover:bg-accent hover:text-accent-foreground"
           onClick={() => append({ text: '' })}
         >
           Add Option
